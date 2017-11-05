@@ -1,0 +1,218 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\DeclareMathOperator{\tr}{tr}
+
+\author{Joel Berkeley}
+\title{Some thoughts}
+
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\Tr}{\mathrm{Tr}}
+
+\begin{document}
+\maketitle
+
+\section{Fluids satisfying $2v_j\partial_{[i}v_{j]}=-r_c\partial^2v_i$}
+
+In the Rindler metric dual to the incompressible Navier-Stokes fluid, we may impose a Killing vector $\xi^r(x^\mu)\partial_r$ which to third order in the hydrodynamic expansion parameter $\epsilon$ give the following constraints on the fluid
+\begin{gather}
+\partial_i (v^2/2+P)+\partial_\tau v_i=\mathcal{O}(\epsilon^3)\label{relaxedcontraint}\\
+\partial^2v_i=\mathcal{O}(\epsilon^5),\qquad \partial_{[i}v_{j]}=\mathcal{O}(\epsilon^4).
+\end{gather}
+The resulting fluid transformation is
+\begin{equation}
+v_i		\rightarrow		\alpha v_i,
+\qquad
+P		\rightarrow		\alpha P	+	\alpha \left( 1 - \alpha \right ) v^2/2,
+\qquad
+r_c	\rightarrow		\alpha r_c,
+\label{scaling}
+\end{equation}
+where $\alpha$ is a real constant. The transformation produces a new solution to the Navier-Stokes equations on the condition that \eqref{relaxedcontraint} is satisfied. We show here that \eqref{relaxedcontraint} necessarily requires vanishing vorticity, and thus potential flow.
+
+Using the Navier-Stokes equations, we may rewrite \eqref{relaxedcontraint} as
+\begin{equation}
+2v_j\partial_{[i}v_{j]}=-r_c\partial^2v_i, \label{relaxedconstraint2}.
+\end{equation}
+The divergence of equation \eqref{relaxedconstraint2} yields
+\begin{equation}
+\omega_{ij}\omega_{ij}=0,
+\end{equation}
+where $\omega_{ij}\equiv2\partial_{[i}v_{j]}$ is the vorticity. By the spectral theorem, we may write the vorticity as the orthogonal transformation of an antisymmetric block diagonal matrix $\Omega$,
+\begin{equation}
+\omega		=		O \Omega O^T,
+\end{equation}
+where $O$ is orthogonal $O^T O = O O^T = I$. Equation \eqref{relaxedconstraint2} then becomes
+\begin{equation}
+\omega_{ij}\omega_{ij}	=		\tr ( \omega^2 )		=		\tr ( O \Omega O^T		O \Omega O^T )		=		\tr ( O \Omega^2 O^T )		=		\tr ( O^T O \Omega^2 )		=		\tr ( \Omega^2 ).
+\end{equation}
+We have used orthogonality of $O$ in the third and fifth equalities, and cyclicity of the trace in the fourth. However, the trace of the square of an antisymmetric block diagonal matrix is $ \tr ( \Omega^2 )	=	- 2 \sum_{i=1}^n \lambda_i^2 $, where the $\lambda_i$ are the real components of each antisymmetric matrix along the diagonal of $\Omega$ (in odd-dimensions, the final row and column of $\Omega$ are zeros). For this to vanish, all the $\lambda_i$ must vanish independently, and thus the vorticity, as the orthogonal transformation of this zero matrix, also vanishes. This holds in arbitrary dimension.
+
+\subsection{Potential flow}
+
+The general solution for zero vorticity is potential flow,
+\begin{equation}
+v_i(\tau,x^j)=-\partial_i \phi, \qquad P(\tau,x^j)=\partial_\tau \phi-\frac{1}{2}(\partial_i \phi)(\partial_i \phi),
+\end{equation}
+where $\partial^2 \phi(\tau,x^i)=0$. The freedom to shift $\phi$ by an arbitrary function of time affects the zero mode of the pressure, whilst the freedom to scale $\phi$ by an arbitrary function of time includes the special case of the constant rescaling $\phi \rightarrow \alpha \phi$, as in \eqref{scaling}.
+
+The scaling of the viscosity is in fact arbitrary on the fluid side, as the dissipative term vanishes for incompressible potential flow. On the bulk side, this corresponds motion of the hypersurface through the bulk, and thus to an invariant RG flow, as one would expect from an isometry generating translations into the bulk. In fact, the fluid energy (IS THIS THE FLUID ENERGY?!) scales (as does the viscosity) linearly in $\alpha$:
+\begin{equation}
+\frac{1}{2} v^2 + P		\rightarrow		\alpha \left( \frac{1}{2} v^2 +P \right)		.
+\end{equation}
+
+\section{The Navier Stokes equation as a divergence}
+
+We may use incompressibility to express the Navier Stokes equation as
+\begin{equation}
+\partial_j		(		x_i \partial_\tau v_j		+		\delta_{ij} P		+		v_j v_i		-		\eta ( \partial_j v_i		-		c \partial_i v_j		)	)		=			0		,
+\end{equation}
+where $c$ is an arbitrary constant. Define a divergence free tensor
+\begin{equation}
+\partial_j f_{ij}		=		0
+\end{equation}
+such that
+\begin{gather}
+x_i \partial_\tau v_j		+		\delta_{ij} P		+		v_j v_i		-		\eta ( \partial_j v_i - c \partial_i v_j )		=			f_{ij}
+\label{divergence free ns}
+\end{gather}
+Taking the trace of \eqref{divergence free ns},
+\begin{equation}
+\partial_\tau x^i v_i		+		P d		+		v^2		=		\mathrm Tr f
+\label{trace of divergence free ns}
+\end{equation}
+while taking the antisymmetric part of \eqref{divergence free ns}, we have
+\begin{equation}
+\partial_\tau x_{ [i } v_{ j] }		-		\eta ( 1 - c ) \partial_{ [j } v_{ i]}		=		f_{ [ij] }		.
+\label{antisymmetric part of divergence free ns}
+\end{equation}
+Consider contracting \eqref{divergence free ns} with the velocity
+\begin{align}
+x^i v^j \partial_\tau v_j		+		v_i P		+		v^2 v_i		-		\eta ( v^j \partial_j v_i		-		c v^j \partial_i v_j )		=		v^j f_{ij}
+\\
+\frac{1}{2} x^i \partial_\tau v^2		+		v_i P		+		v^2 v_i		-		\eta
+	\left[
+		( - \partial_\tau v_i		-		\partial_i P		+		\eta \partial^2 v_i )		-		\frac{1}{2} c \partial_i v^2
+	\right]
+	=		v^j f_{ij}
+\label{velocity dot divergence free ns}
+\end{align}
+and [consider contracting with the velocity on the other index - then imposing $\partial_\tau v^j x_j = 0$ would allow subtituting $x^j v_j = g(x^k)$].
+
+\subsection*{The case $\partial_\tau x^i v_i = 0$}
+
+If we now impose
+\begin{equation}
+\partial_\tau x^i v_i = 0		,
+\label{condition v.x constant}
+\end{equation}
+then equation \eqref{trace of divergence free ns} becomes
+\begin{equation}
+v^2		=		\mathrm Tr f		-		P d
+\end{equation}
+which we can substitute into \eqref{velocity dot divergence free ns} to find
+\begin{multline}
+\frac{1}{2} x^i \partial_\tau (\Tr f - P d )		+		v_i P		+		(\Tr f - P d ) v_i
+\\
+-		\eta
+		\left[
+			( - \partial_\tau v_i		-		\partial_i P		+		\eta \partial^2 v_i )		-		\frac{1}{2} c \partial_i (\Tr f - P d )
+		\right]
+	=		v^j f_{ij}
+\end{multline}
+Collecting terms with the velocity on one side of the equation, we find
+\begin{multline}
+\left[
+	( P (1 - d)		+		\Tr f		+		\eta \partial_\tau		-		\eta^2 \partial^2 ) \delta_{ij}		-		f_{ij}
+\right]
+v_j
+\\
+=		-		\frac{1}{2} ( x_i \partial_\tau		+		c \eta \partial_i ) ( \Tr f		-		Pd )		-		\eta \partial_i P
+\end{multline}
+This is now a second order linear PDE in the velocity. The term on the left hand side of the equation is reminiscent of the heat equation
+\begin{equation}
+\partial_\tau		-		\partial^2		=		0		,
+\end{equation}
+which uses the solution technique of differentiating under the integral of a fourier transform. Thus, we use the form
+\begin{equation}
+v_i (x_j, \tau)		=		\int_{-\infty}^\infty \ud^d k \,		e^{ - i k_l x^l }		u_i(k_j, \tau)		.
+\end{equation}
+
+If we set $c=1$, then \eqref{antisymmetric part of divergence free ns} yields with \eqref{condition v.x constant},
+\begin{equation}
+\partial_\tau x_{ [i } v_{ j] }		=		f_{ [ij] }		.
+\end{equation}
+contracting with $x^i$, we find
+\begin{equation}
+\frac{1}{2} (\partial_\tau x^2 v_j - \partial_\tau x_j x^iv_i)		= x^i f_{[ij]}
+\end{equation}
+or, integrating with respect to $\tau$,
+\begin{equation}
+v_j		=		2 \int \ud\tau \, x^i f_{[ij]}		+		h_j (x^i)
+\label{v = 2 int x.f_[ ]  + h(x)}
+\end{equation}
+Since this automatically gives the constraint
+\begin{equation}
+\partial_\tau v^i x_i =0,
+\end{equation}
+we can neglect the constraint, and use \eqref{v = 2 int x.f_[ ]  + h(x)} instead.
+
+Note: Could consider transforming to the frame where
+\begin{equation}
+\tilde \partial_i		=		x^i \partial_\tau		-		\eta (1 - c) \partial_i
+\end{equation}
+which would give, for $\partial_\tau x^i v_i = 0$ and with incompressibility
+\begin{equation}
+\tilde \partial_{ [i } v_{ j] }		=		\frac{ \partial \tilde x^k }{ \partial x^i } \frac{ \partial \tilde x^l }{ \partial x^j } \tilde f_{ [kl] }
+\qquad
+\tilde \partial_i v^i		=		0
+\end{equation}
+
+\section{Tensors orthogonal to $\xi^\mu$}
+
+What is the most general form of $A_{\mu \rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}$ such that
+\begin{equation}
+\xi^\mu A_{\mu \rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}		=		0?
+\end{equation}
+Define
+\begin{equation}
+\bar A_{\mu \rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}		\equiv		A_{\mu \rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}		-		\xi_\mu B_{\rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}.
+\label{A bar def}
+\end{equation}
+Then
+\begin{equation}
+0		=		\xi^\mu A_{\mu \rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}		=		\xi^\mu \bar A_{\mu \rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}		+		\xi^\mu \xi_\mu B_{\rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m},
+\end{equation}
+which gives
+\begin{equation}
+B_{\rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}		=		- \frac{ 1 }{\xi^\nu \xi_\nu} \xi^\mu \bar A_{\mu \rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}.
+\end{equation}
+Substituting $B_{\rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}$ into \eqref{A bar def}, we find
+\begin{equation}
+A_{\mu \rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}		=		\left(		\delta^\nu_\mu		-		\frac{ 1 }{\xi^\sigma \xi_\sigma} \xi_\mu \xi^\nu		\right)		\bar A_{\nu \rho_1 \ldots \rho_n}{}^{\eta_1 \ldots \eta_m}.
+\end{equation}
+
+Some tensors orthognal to $\xi^\mu$ are
+\begin{gather}
+\xi^\sigma \xi_\sigma \delta^\nu_\mu		-		\xi_\mu \xi^\nu,
+\qquad
+R_{\mu \sigma \rho \nu} \xi^\mu \xi^\rho		=		R_{\mu \nu \rho \sigma} \xi^\mu \xi^\rho
+\end{gather}
+
+\section{3D fluids dual to 2D fluids}
+
+In \cite{Wu:2013mda}, they consider the case of a $(d+1)$-dimensional gravitational theory where the stress tensor is that of a perfect fluid source. The dual theory living on the boundary is that of a $d$-dimensional Navier-Stokes fluid with a forcing term with contributions from the curvature of the hypersurface and the stress-energy of the bulk fluid. Does this imply that the Navier-Stokes equations in three dimensions are dual to the forced Navier-Stokes equations in two dimensions?
+
+\begin{thebibliography}{99}
+
+\bibitem{Wu:2013mda}
+  B.~Wu and L.~Zhao,
+  ``Gravity-mediated holography in fluid dynamics,''
+  arXiv:1303.4475 [hep-th].
+  %%CITATION = ARXIV:1303.4475;%%
+
+\end{thebibliography}
+
+\end{document}

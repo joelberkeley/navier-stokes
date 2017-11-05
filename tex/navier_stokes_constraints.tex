@@ -1,0 +1,307 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+
+\newcommand{\ud}{\mathrm{d}}
+\DeclareMathOperator{\tr}{tr}
+
+\title{Constraints on an incompressible Navier-Stokes fluid}
+\date{}
+
+
+
+
+\begin{document}
+
+\maketitle
+
+The $(d+1)$-dimensional Navier-Stokes equations and the incompressibility condition are\footnote{In all calculations in this work we will assume the velocity satisfies incompressibility.}
+\begin{align}
+	\partial_t v_i + \partial_i P + v_j\partial_j v_i - \eta \partial^2 v_i & = 0
+\\	\partial_i v_i & = 0		\quad.
+\end{align}
+Assuming incompressibility in all following calculations, the Navier-Stokes equations can be written as
+\begin{align}
+	x_i \partial_t v_j + \delta_{ij} P + v_j v_i - \eta \partial_j v_i & = f_{ij}
+\\	\partial_j f_{ij} & = 0\quad.
+\end{align}
+Of course, we can add arbitrary terms to $f_{ij}$ whose divergence vanishes, for example
+\begin{equation}
+	\partial_i v_j = 0		\quad.
+\end{equation}
+On this basis, we will consider the equation
+\begin{align}
+	x_i \partial_t v_j + \delta_{ij} P + v_j v_i - \eta \partial_j v_i + \xi \partial_i v_j & = f_{ij}		\label{NS equations in terms of divergence-free tensor (E_ij)}
+\\	\partial_j f_{ij} & = 0\quad.
+\end{align}
+where $\xi$ is an arbitrary constant.
+
+We shall proceed by analysing the antisymmetric part and the trace of \eqref{NS equations in terms of divergence-free tensor (E_ij)}.
+
+\section{The antisymmetric part}
+
+The antisymmetric part of \eqref{NS equations in terms of divergence-free tensor (E_ij)} is
+\begin{equation}
+\partial_t v_{[j} x_{i]} - (\eta + \xi) \partial_{[j} v_{i]} = f_{[ij]}		\quad.
+\label{antisymmetric part of NS}
+\end{equation}
+There are two cases to consider
+
+\subsection{Case 1: $\eta + \xi = 0$}
+
+In the case
+\begin{equation}
+\eta + \xi = 0\quad,
+\end{equation}
+equation \eqref{antisymmetric part of NS} becomes
+\begin{equation}
+\partial_t v_{[j} x_{i]} = f_{[ij]}		\quad,
+\label{antisymmetric part for eta + xi = 0}
+\end{equation}
+which has solutions only if\footnote{necessary, but is it sufficient?}
+\begin{equation}
+x_{[i} f_{jk]} = 0    \quad.
+\end{equation}
+Contraction with $x_i$ gives\footnote{we have yet to show that \eqref{solution to contr. of antisym with x} solves \eqref{antisymmetric part for eta + xi = 0} - i.e.\ that they are equivalent}
+\begin{equation}
+v_j	=	\frac{1}{x^2}
+		\left(
+			2 \int \ud t \, x_i f_{[ij]} + x_j C(t,x^k)
+		\right)\quad,
+\label{solution to contr. of antisym with x}
+\end{equation}
+where we have used the fact that $x_i v_i$ is unconstrained by \eqref{antisymmetric part for eta + xi = 0} and so can therefore be replaced by an arbitrary function $C(t,x^i)$.\footnote{Note that this equation yields $h = C$. Does this have any implications for the form of $h$? Does it imply anything else?}
+
+\subsection{Case 2: $\eta + \xi \neq 0$}
+
+For
+\[
+	\eta + \xi \neq 0	\quad,
+\]
+we can transform to the coordinate frame
+\begin{equation}
+\tau =	(\eta + \xi) t - x^2/2
+\qquad
+y_i =	x_i
+\end{equation}
+or
+\begin{equation}
+t = \frac{\tau + y^2/2}{\eta + \xi}
+\qquad
+x_i = y_i \quad,
+\end{equation}
+where
+\begin{align}
+\left. \frac{\partial }{\partial \tau} \right)_{y_i}
+	& = \left( \frac{\partial x_j}{\partial \tau} \right)_{y_i} \left. \frac{\partial }{\partial x_j} \right)_{t, x_{k\neq j}} + \left( \frac{\partial t}{\partial \tau} \right)_{y_i} \left. \frac{\partial }{\partial t} \right)_{x_j}
+\\	& = 0 + \frac{1}{\eta+\xi} \left. \frac{\partial }{\partial t} \right)_{x_j}
+\\
+\frac{\partial}{\partial y_i} & = \frac{1}{\eta + \xi} x_i\partial_t + \partial_i
+\end{align}
+
+\subsubsection{Case 2i: $\eta - \xi = 0$}
+
+For
+\begin{equation}
+\eta - \xi = 0
+\end{equation}
+the symmetric part of \eqref{} is
+\begin{equation}
+\partial_t v_{(j} x_{i)} + \delta_{ij} P + v_j v_i = f_{(ij)} \quad.
+\label{symmetric part of E_ij}
+\end{equation}
+With test function
+\begin{equation}
+x_i v_i = h(t, x_i) \quad,
+\end{equation}
+we can consider the contraction of \eqref{symmetric part of E_ij} with $x^i$:
+\begin{equation}
+\frac{1}{2} \left(x^2 \partial_t v_j + x_j \partial_t h \right) + x_j P + v_j h = x_i f_{(ij)} \quad,
+\end{equation}
+or, rearranging, we find
+\begin{equation}
+e^{2h/x^2}\left( \frac{1}{2} x^2 \partial_t + h \right) v_j = e^{2h/x^2} \left( x_i f_{(ij)} - x_j P - \frac{1}{2} x_j \partial_t h \right) \quad,
+\end{equation}
+which can be rearranged as
+\begin{equation}
+\frac{1}{2} x^2 \partial_t \left( e^{2h/x^2} v_j \right) = e^{2h/x^2} \left( x_i f_{(ij)} - x_j P - \frac{1}{2} x_j \partial_t h \right) \quad,
+\end{equation}
+and integrated to give
+\begin{equation}
+v_j = \frac{2}{x^2} e^{-2h/x^2} \int \ud t \, e^{2h/x^2} \left( x_i f_{(ij)} - x_j P - \frac{1}{2} x_j \partial_t h \right) \quad,
+\end{equation}
+and integrating the last term
+\begin{equation}
+v_j = \frac{2}{x^2} \left[ e^{-2h/x^2} \int \ud t \, e^{2h/x^2} \left( x_i f_{(ij)} - x_j P \right) \right] - \frac{1}{2} x_j \quad.
+\label{velocity from symmetric}
+\end{equation}
+
+All remaining parts of \eqref{symmetric part of E_ij} are given by contraction with $\gamma_{ik}\gamma_{jl}$, where
+\begin{equation}
+\gamma_{ij} = \delta_{ij} - \frac{1}{x^2}x_i x_j
+\end{equation}
+as
+\begin{equation}
+\hat v_k \hat v_l = \hat f_{(kl)} - \gamma_{kl} P
+\label{projected symmetric}
+\end{equation}
+where $\hat{}$ implies contraction with $\gamma$. Note that this has no implications for the form of $h$, as $x$ annihilates all terms in this equation. Note that the trace of this equation is
+\begin{equation}
+v^2 = \gamma_{kl} f_{kl} - P(d - 1) +  \frac{h^2}{x^2}
+\end{equation}
+
+Moreover, contracting \eqref{velocity from symmetric} with $\gamma_{jk}$ gives
+\begin{equation}
+\hat v_k = 2x^2 x_i \gamma_{jk} e^{-2h/x^2} \int \ud t \, e^{2h/x^2} f_{(ij)}
+\end{equation}
+which we can compare with \eqref{projected symmetric} to find a constraint equation in $\hat f_{(ij)}$ and $P$. We can define
+\begin{equation}
+\sigma_{ij} = e^{-2h/x^2} \gamma_{ij}
+\end{equation}
+which we can use to bring this constraint into the form
+\begin{equation}
+P \sigma_{ij} = -4x^4 \int \ud t \, x_k f_{(kl)} \sigma_{li} \int \ud t \, x_m f_{(mn)} \sigma_{nj} + \sigma_{ik} f_{(kl)} \sigma_{lj}
+\end{equation}
+
+\section{The trace}
+
+The trace of \eqref{NS equations in terms of divergence-free tensor (E_ij)} is
+\begin{equation}
+\partial_t v_i x_i + Pd + v^2 = \tr f
+\label{trace of E_ij}
+\end{equation}
+We can solve these equations using a test function
+\[
+	x_i v_i = h(t,x^i).
+\]
+
+Alternatively, we can write \eqref{trace of E_ij} as
+\begin{equation}
+D_i D_i 1 = tr(f) - Pd
+\qquad
+\text{where}
+\quad
+D_i = x_i \partial_t + v_i
+\end{equation}
+
+\subsection{The case $x_i\partial_t v_i = 0$}
+In the case
+\begin{equation}
+	x_i\partial_t v_i = h = 0		,
+\end{equation}
+equation \eqref{} becomes
+\begin{equation}
+	\ldots
+\end{equation}
+
+
+
+
+\section{Stationary incompressible Navier-Stokes}
+
+For stationary fluids with
+\begin{equation}
+  \partial_t v_j = 0
+\end{equation}
+we have
+\begin{align}
+  \partial_i v_i  &=  0  \\
+  v_j\partial_j v_i + \partial_i P - \eta\partial^2 v_i  &=  0
+\end{align}
+or, with redefining the fields such that $v_i \rightarrow \eta v_i$, $P \rightarrow \eta P$, where we effectively scale $\eta$ to 1,
+\begin{align}
+  \partial_i v_i  &=  0  \\
+  v_j v_i - \partial_j v_i + \xi \partial_i v_j &=  f_{ij} - \delta_{ij} P  \\
+  \partial_j f_{ij}  &=  0
+\end{align}
+Consider the following cases.
+
+\subsection{Case 1: $\xi = 1$}
+Here, we have
+\begin{align}
+  \partial_i v_i  &=  0  \\
+  v_j v_i - 2\partial_{[j} v_{i]} &=  f_{ij} - \delta_{ij} P  \\
+  \partial_j f_{ij}  &=  0
+\end{align}
+or
+\begin{align}
+  \partial_i v_i  &=  0  \\
+  v_j v_i  &=  f_{(ij)} - \delta_{ij} P  \\
+  2\partial_{[j} v_{i]} &=  f_{[ij]}  \\
+  \partial_j f_{ij}  &=  0
+\end{align}
+
+\subsection{Case 2: $\xi = -1$}
+Here we have
+\begin{align}
+  \partial_i v_i                      &=  0                          \\
+  v_j v_i - 2\partial_{(j} v_{i)} &=  f_{(ij)} - \delta_{ij} P       \label{symmetric with xi = -1}\\
+  0                                   &=  f_{[ij]}                   \\
+  \partial_j f_{ij}                   &=  0
+\end{align}
+We can express \eqref{symmetric with xi = -1} as
+\begin{equation}
+  D_{(i} D_{j)} 1 = g_{ij}
+\end{equation}
+where
+\begin{equation}
+  D_i  \equiv  \partial_i - v_i    \qquad    g_{ij}  \equiv  f_{(ij)} - \delta_{ij} P
+\end{equation}
+or we can use $\partial_i k = v_i/2$ to write
+\begin{equation}
+  -2 \partial_{(i} ( e^{-k} v_{j)} )  =  e^{-k} g_{ij}
+\end{equation}
+
+\appendix
+
+\section{Next steps}
+
+\begin{itemize}
+\item Solve incompressibility and find its implications for $h$.
+\item Solve $v_j$ equations for this form of $h$
+\item Figure out what to do with the hatted equation.
+\end{itemize}
+
+\section{Solution of divergence equation}
+
+For tensor $f(t,x_k)_{ij}$ satisfying
+\begin{equation}
+\partial_j f_{ij} = 0		,
+\end{equation}
+we can use 
+\begin{equation}
+f(t,x_l)_{ij} = \int_{-\infty}^\infty \frac{\ud^d q}{(2\pi)^{d/2}} e^{-iq_k x_k} \tilde f(t,q_l)_{ij}
+\end{equation}
+to find, by using the inverse Fourier transform,
+\begin{equation}
+q_j \tilde f_{ij} = 0		.
+\end{equation}
+This equation can be solved by introducing a field
+\begin{equation}
+\tilde g_{ij} \equiv \tilde f_{ij} - q_j q_k \tilde h_{ik}
+\end{equation}
+for some arbitrary $\tilde h_{ik}$, then we find
+\begin{equation}
+0 = q_j \tilde f_{ij} = q_j \tilde g_{ij} + q^2q_k \tilde h_{ik}
+\end{equation}
+thus
+\begin{equation}
+q_k \tilde h_{ik} = - \frac{1}{q^2} q_j \tilde g_{ij} \qquad q_i \neq 0\quad\forall i
+\end{equation}
+where we have used that given $q^2 \geq 0$, having $q^2 = 0$ implies $q_i = 0 \quad\forall i$, where the previous equation is trivially satisfied. Therefore,
+\begin{equation}
+\tilde f_{ij} = g_{ij} - \frac{1}{q^2} q_j q_k \tilde g_{ik} = \left( \delta_{jk} - \frac{1}{q^2} q_j q_k \right) \tilde g_{ik} \qquad .
+\end{equation}
+taking the Fourier transform of this, we find
+\begin{align}
+f_{ij} 	& = \int_{-\infty}^\infty \frac{\ud^d q}{(2\pi)^{d/2}} e^{-iq_k x_k} \left( \delta_{jk} - \frac{1}{q^2} q_j q_k \right) \tilde g_{ik}
+\\		& = \int_{-\infty}^\infty \frac{\ud^d q}{(2\pi)^{d/2}} e^{-iq_k x_k} \left( q^2 \delta_{jk} - q_j q_k \right) \frac{1}{q^2} \tilde g_{ik}
+\\		& = \left( \delta_{jk} \partial^2 - \partial_j \partial_k \right) \int_{-\infty}^\infty \frac{\ud^d q}{(2\pi)^{d/2}} e^{-iq_k x_k}  \frac{1}{q^2} \tilde g_{ik}
+\\		& = \left( \delta_{jk} \partial^2 - \partial_j \partial_k \right) h_{ik}
+\end{align}
+for arbitrary(?) $h_{ij}$.
+
+\end{document}
